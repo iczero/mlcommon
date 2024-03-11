@@ -1,0 +1,27 @@
+numpy
+scipy
+matplotlib
+polars
+# qt6 backend for matplotlib
+PySide6
+
+ipython
+ipykernel
+ipywidgets
+pickleshare
+tqdm
+ipympl
+safetensors
+
+# jax: --find-links https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+# jax[cuda12_local]
+# optax
+
+torch
+torchvision
+torchaudio
+
+aim
+
+# for torch preview:
+# --find-links https://download.pytorch.org/whl/nightly/cu121
