@@ -2,13 +2,14 @@ import time
 __startup_time = time.time()
 
 import os
+import pathlib
+
 import numpy as np
 import scipy
 import torch
 from torch import nn
 import polars as pl
 import matplotlib
-import pathlib
 
 def __do_init():
     ipy = get_ipython()
@@ -50,5 +51,5 @@ __do_init()
 # late imports
 import matplotlib.pyplot as plt
 
-print('Initialized in {:.3f}s'.format(time.time() - __startup_time))
+print(f'Initialized in {time.time() - __startup_time:.3f}s')
 del __do_init, __startup_time
