@@ -7,6 +7,7 @@ import pathlib
 import numpy as np
 import scipy
 import torch
+import torch.nn.functional as F
 from torch import nn
 import polars as pl
 import matplotlib
