@@ -25,4 +25,21 @@ def site_init():
 
     # initialize import hooks
     importhooks = ImportHooks.register()
-    # TODO: hook something, I guess
+
+    @importhooks.hook_after_load('torch.cuda')
+    def _torch_cuda_disable_spinwait(module):
+        if not module.is_available() or os.environ.get('MLCOMMON_CUDA_ALLOW_SPINWAIT') == 1:
+            return
+
+        import ctypes
+        try:
+            cudart = ctypes.CDLL('libcudart.so')
+            # cudaDeviceScheduleBlockingSync = 0x04
+            cudart.cudaSetDeviceFlags(4)
+            # check if it worked
+            # i = ctypes.c_uint()
+            # cudart.cudaGetDeviceFlags(ctypes.byref(i))
+            # print('cudaGetDeviceFlags():', i)
+        except:
+            # ignore
+            pass
